@@ -19,56 +19,29 @@ const { Header, Content, Footer } = Layout;
 
 function App() {
   return (
-    <Layout className="mainLayout">
-      <Header>
-        <AppHeader />
-      </Header>
-      <Content>
-        <AppHome />
-      </Content>
-      <Footer>
-        <AppFooter />
-      </Footer>
-    </Layout>
+    <div>
+      <Layout className="mainLayout">
+        <Router>
+          <div>
+            <Switch>
+              <Route path="/:id" children={<DetailMenuOrder />} />
+              <Route path="/">
+                <Header>
+                  <AppHeader />
+                </Header>
+                <Content>
+                  <AppHome />
+                </Content>
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+        <Footer>
+          <AppFooter />
+        </Footer>
+      </Layout>
+    </div>
   );
 }
 
 export default App;
-
-
-
-// export default function App() {
-//   return (
-//     <Router>
-//       <div>
-//         <nav>
-//           <ul>
-//             <li>
-//               <Link to="/">Home</Link>
-//             </li>
-//             <li>
-//               <Link to="/about">About</Link>
-//             </li>
-//             <li>
-//               <Link to="/users">Users</Link>
-//             </li>
-//           </ul>
-//         </nav>
-
-//         {/* A <Switch> looks through its children <Route>s and
-//             renders the first one that matches the current URL. */}
-//         <Switch>
-//           <Route path="/about">
-//             <About />
-//           </Route>
-//           <Route path="/users">
-//             <Users />
-//           </Route>
-//           <Route path="/">
-//             <Home />
-//           </Route>
-//         </Switch>
-//       </div>
-//     </Router>
-//   );
-// }

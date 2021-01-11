@@ -7,6 +7,8 @@ import image4 from '../../assets/images/easy-customise.jpg';
 import image5 from '../../assets/images/unlimited-features.jpg';
 import image6 from '../../assets/images/advanced-option.jpg';
 
+import DetailMenuOrder from '../menu/detailMenuOrder'
+
 import { Row, Col } from 'antd';
 import { Card } from 'antd';
 import { Link } from "react-router-dom";
@@ -31,7 +33,8 @@ function AppFeature() {
       arrayTotal.push({
         totalDiscount: Math.round(totalDiscount),
         discount: Math.round(discount / 15 * 100),
-        totalUnitPrice: Math.round(totalUnitPrice)
+        totalUnitPrice: Math.round(totalUnitPrice),
+        orderId: list[i].orderId
       })
     }
     setlistTotal(arrayTotal)
@@ -56,8 +59,10 @@ function AppFeature() {
           <p>Chọn thực đơn cho cả tuần tươi khỏe</p>
         </div>
         <Row gutter={[16, 16]}>
-          {listTotal.map((value) => ( 
-              <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
+          {listTotal.map((value) => (
+            <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
+
+              <Link to={'/' + value.orderId}>
                 <Card
                   hoverable
                   cover={<img alt="Modern Design" src={image1} />}
@@ -65,18 +70,19 @@ function AppFeature() {
                   <Meta title="Modern Design" />
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <b>{value.totalDiscount}</b>
-                    <del  >{value.totalUnitPrice}</del>
+                    <del>{value.totalUnitPrice}</del>
                     <b>{value.discount}%</b>
                   </div>
-                </Card>
-              </Col> 
 
+                </Card>
+              </Link>
+            </Col>
           ))}
         </Row>
 
 
       </div>
-    </div>
+    </div >
   );
 }
 
