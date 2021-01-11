@@ -35,7 +35,7 @@ function AppHero() {
                 <p>{item.content}</p>
                 <div className="btnHolder">
                   <Button type="primary" size="large">Tìm hiểu</Button>
-                  <Button size="large"><i class="fas fa-store"></i> Đặt ngay</Button>
+                  <Button size="large"><i className="fas fa-store"></i> Đặt ngay</Button>
                 </div>
               </div>
             </div>
