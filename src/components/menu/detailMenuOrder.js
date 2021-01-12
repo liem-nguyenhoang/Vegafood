@@ -125,8 +125,21 @@ export default function DetailMenuOrder() {
                         setshowXuatHoaDon(false)
                         setshowThanhToan(true)
                     }}>Quay lại</button>
-                    <button onClick={() => {
-                        // setshowXuatHoaDon(false)
+                    <button onClick={async () => {
+                        await fetch('https://localhost:44323/api/Orders', {
+                            method: "POST",
+                            headers: new Headers({
+                                "Content-Type": "application/json",
+                            }),
+                            body: JSON.stringify({
+                                "customerId": "LNH08",
+                                "shipVia": 1,
+                                "orderDetails": JSON.stringify(listIdProduct)
+                            })
+                        })
+
+
+
                     }}>Xuất hóa đơn</button>
                 </div>
             </div>}
